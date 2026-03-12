@@ -1,0 +1,487 @@
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  font-family:  'Georgia', serif;
+  background-color: #1a2332; /* Navy blue fallback */
+}
+
+/* Full Width Background Video */
+.hero-video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:#FFFDD0 ; /* Navy blue overlay */
+  z-index: 2;
+}
+
+/* Hero Section specific styles */
+
+/* Sidebars - Only for Hero Section */
+.hero-section .sidebar {
+  position: absolute;
+  top: 0;
+  width: 20%;
+  height: 100vh;
+  z-index: 10;
+  /* Transparent - video shows through */
+}
+
+.hero-section .left-sidebar {
+  left: 0;
+}
+
+.hero-section .right-sidebar {
+  right: 0;
+}
+
+/* Center Image Area - Only for Hero Section */
+.hero-section .center-image-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 70vh;
+  overflow: hidden;
+  z-index: 15; /* Above video background */
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+/* Adjust for larger screens to fill container without gaps */
+@media (min-width: 1025px) {
+  .hero-section .center-image-area {
+    width: 50%;
+    height: 75vh;
+  }
+  
+  .hero-slide {
+    background-size: cover;
+  }
+
+  .hero-text-glass {
+    padding: 3.5rem 5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-section .center-image-area {
+    width: 55%;
+    height: 80vh;
+  }
+
+  .hero-text-glass {
+    padding: 3rem 5rem;
+  }
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 35, 50, 0.3) 0%,
+    rgba(26, 35, 50, 0.5) 100%
+  );
+  z-index: 2;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  color: white;
+  width: 100%;
+  padding: 0 40px;
+}
+
+.hero-text-glass {
+  background: rgba(26, 35, 50, 0.085);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border: 1px solid rgba(219, 171, 92, 0.2);
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+              0 0 30px rgba(219, 171, 92, 0.15);
+  max-width: 650px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: glassAppear 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes glassAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-text {
+  opacity: 1;
+}
+
+.hero-section.loaded .hero-text-glass {
+  animation: glassAppear 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.name-line {
+  display: block;
+  font-size: 4.5rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-gold);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  line-height: 1.3;
+  animation: fadeSlideIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+.name-line.typewriter {
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  animation-delay: 0.3s;
+  color: white;
+  min-height: 3rem;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  background: var(--primary-gold);
+  margin-left: 5px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.name-line.bride {
+  animation-delay: 1.8s;
+   font-family: 'Georgia', serif;
+  font-weight: 900;
+  font-size: 5rem;
+  text-shadow: 4px 4px 16px rgba(0, 0, 0, 0.9), 2px 2px 8px rgba(0, 0, 0, 0.7);
+  -webkit-text-stroke: 1px rgba(219, 171, 92, 0.3);
+  text-stroke: 1px rgba(219, 171, 92, 0.3);
+}
+
+.name-line.groom {
+  animation-delay: 2.4s;
+  font-family: 'Georgia', serif;
+  font-weight: 900;
+  font-size: 5rem;
+  text-shadow: 4px 4px 16px rgba(0, 0, 0, 0.9), 2px 2px 8px rgba(0, 0, 0, 0.7);
+  -webkit-text-stroke: 1px rgba(219, 171, 92, 0.3);
+  text-stroke: 1px rgba(219, 171, 92, 0.3);
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.and-text {
+  display: block;
+  font-family: 'Georgia', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--primary-gold);
+  margin: 0.3rem 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 1s ease-out 2.1s forwards;
+  opacity: 0;
+  font-style: normal;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.wedding-date {
+  margin: 3rem 0 2rem;
+  animation: fadeIn 1s ease-out 1.2s forwards;
+  opacity: 0;
+}
+
+.date-text {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: bounce 2s infinite 1.5s;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.scroll-arrow {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator span {
+  font-size: 0.85rem;
+  color: white;
+  opacity: 0.9;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  20%, 50%, 80% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-15px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-7px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-section .sidebar {
+    width: 10%;
+  }
+  
+  .hero-section .center-image-area {
+    width: 60%;
+    height: 60vh;
+  }
+  
+  /* Ensure video covers full width on tablets */
+  .hero-video-background {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section .sidebar {
+    width: 5%;
+  }
+  
+  .hero-section .center-image-area {
+    width: 75%;
+    height: 55vh;
+  }
+
+  /* Ensure video covers full width on mobile */
+  .hero-video-background {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  .hero-text-glass {
+    padding: 1.5rem 1.8rem;
+    border-radius: 20px;
+    max-width: 500px;
+  }
+
+  .name-line {
+    font-size: 2.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* .name-line.bride,
+  .name-line.groom {
+    font-family: 'Herr Von Muellerhoff', cursive;
+    font-weight: 900;
+    font-size: 3rem;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9), 1px 1px 6px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 0.5px rgba(219, 171, 92, 0.3);
+    text-stroke: 0.5px rgba(219, 171, 92, 0.3);
+  } */
+
+  .name-line.typewriter {
+    font-size: 1.8rem;
+  }
+  
+  .and-text {
+    font-size: 1.4rem;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section .sidebar {
+    width: 2%;
+  }
+  
+  .hero-section .center-image-area {
+    width: 85%;
+    height: 50vh;
+  }
+
+  /* Ensure video covers full width on small mobile */
+  .hero-video-background {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  .hero-text-glass {
+    padding: 1.2rem 1.5rem;
+    border-radius: 15px;
+    max-width: 400px;
+  }
+
+  .name-line {
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* .name-line.bride,
+  .name-line.groom {
+    font-family: 'Herr Von Muellerhoff', cursive;
+    font-weight: 900;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 1px 1px 4px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 0.5px rgba(219, 171, 92, 0.3);
+    text-stroke: 0.5px rgba(219, 171, 92, 0.3);
+  } */
+
+  .name-line.typewriter {
+    font-size: 1.3rem;
+  }
+  
+  .and-text {
+    font-size: 1.2rem;
+  }
+
+  .hero-content {
+    padding: 0 15px;
+  }
+
+  .header-bar {
+    height: 50px;
+  }
+
+  .hamburger span {
+    width: 16px;
+  }
+}
+
